@@ -1,0 +1,116 @@
+﻿@model WebApplicationJECRC.Models.FIG
+
+@{
+    ViewBag.Title = "Delete";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>FIG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.internsNbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.internsNbr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LetterAlloted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LetterAlloted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Applied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Applied)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stipened)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stipened)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoFeesNoStippend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoFeesNoStippend)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Confirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Confirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login.Username)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebApplicationJECRC.Models.University_FIG_Coor>
+
+@{
+    ViewBag.Title = "Index";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+<h2 align="center">University Coordinator Details</h2>
+<br />
+<br />
+
+<p>
+<a href="@Url.Action("Create","University_FIG_Coo")"><b>Create </b></a>
+</p>
+<table class=" table table-bordered table-striped">
+    <tr>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.Name)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.EmailID)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.Login.Username)
+            </b>
+        </td>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.EmailID)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.Login.Username)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+              
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+<p><a href="@Url.Action("Index","Admin")"><b>Back to Admin Tool Bar</b></a></p>
+<p><a href="@Url.Action("LogOut","Login")"><b>LogOut</b></a></p>

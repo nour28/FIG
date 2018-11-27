@@ -1,0 +1,76 @@
+﻿
+
+@{
+    ViewBag.Title = "DisplayStudentsByFIG";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+<h2 align="center">List of students supervised by @ViewData["FIGName"]</h2>
+<br />
+<br />
+
+<div>
+
+
+
+
+    <table class=" table table-bordered table-striped">
+        <tr>
+            <td colspan="5" style="vertical-align : middle" align="center"><a><b>Student details</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b>Parents Mobile Number</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b>Internship Letter Alloted</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b>Applied</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b>Company Paid/UnPaid</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b>Amount</b></a></td>
+            <td colspan="4" style="vertical-align : middle" align="center"><a><b>Organization Details</b></a></td>
+        </tr>
+        <tr>
+            <td style="vertical-align : middle" align="center"><b>ID</b></td>
+            <td style="vertical-align : middle" align="center"><b>Name</b></td>
+            <td style="vertical-align : middle" align="center"><b>Email ID</b></td>
+            <td style="vertical-align : middle" align="center"><b>Registration Number</b></td>
+            <td style="vertical-align : middle" align="center"><b>Branch</b></td>
+            <td style="vertical-align : middle" align="center"><b>Name</b></td>
+            <td style="vertical-align : middle" align="center"><b>Address</b></td>
+            <td style="vertical-align : middle" align="center"><b>Location</b></td>
+            <td style="vertical-align : middle" align="center"><b>Contact Number</b></td>
+            <td></td>
+       
+        </tr>
+        <tbody>
+            @foreach (var student in ViewBag.students)
+            {
+            <tr>
+                <td style="vertical-align : middle" align="center">@student.LoginID</td>
+                <td style="vertical-align : middle" align="center">@student.Name</td>
+                <td style="vertical-align : middle" align="center">@student.EmailID</td>
+                <td style="vertical-align : middle" align="center">@student.RegNumber</td>
+                <td style="vertical-align : middle" align="center">@student.Branch.Name</td>
+                <td style="vertical-align : middle" align="center">@student.ParentMobilenNumber</td>
+                <td style="vertical-align : middle" align="center">@student.LetterAlloted</td>
+                <td style="vertical-align : middle" align="center">@student.HasApplied</td>
+                <td style="vertical-align : middle" align="center">@student.IsPaid</td>
+                <td style="vertical-align : middle" align="center">@student.Amount</td>
+                <td style="vertical-align : middle" align="center">@student.Organization.Name</td>
+                <td style="vertical-align : middle" align="center">@student.Organization.Location </td>
+                <td style="vertical-align : middle" align="center">@student.Organization.Adress</td>
+                <td style="vertical-align : middle" align="center">@student.Organization.ContactNumber</td>
+                <td>
+                    <a href="@Url.Action("Edit","Students",new { id = student.ID })"><b>Edit</b></a>
+                    <a href="@Url.Action("Delete","Students",new { id = student.ID })"><b>Delete</b></a>
+                   
+                </td>
+            </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
+<a href="@Url.Action("Add","Login")">Add Student</a>
+<p><a href="@Url.Action("LogOut","Login")">LogOut</a></p>

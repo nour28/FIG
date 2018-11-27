@@ -1,0 +1,132 @@
+﻿@model IEnumerable<WebApplicationJECRC.Models.FIG>
+
+@{
+    ViewBag.Title = "Index";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+
+<h2 align="center">List of FIGs </h2>
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.Name)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.EmailID)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.internsNbr)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.LetterAlloted)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.Applied)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.Stipened)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.NoFeesNoStippend)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.StudentPaid)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.Confirmed)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.Branch.Name)
+            </b>
+        </td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.Login.Username)
+            </b>
+        </td>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.EmailID)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.internsNbr)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.LetterAlloted)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.Applied)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.Stipened)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.NoFeesNoStippend)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.StudentPaid)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.Confirmed)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.Branch.Name)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.Login.Username)
+            </td>
+            <td style="vertical-align : middle" align="center">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+            </td>
+
+            <td style="vertical-align : middle" align="center">
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+            <td style="vertical-align : middle" align="center">
+                <a href="@Url.Action("DisplayStudentsByFIG", "Student", new { id = item.ID })">Show details</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<p><a href="@Url.Action("Index","Admin")"><b>Back to Admin Tool Bar</b></a></p>
+<p><a href="@Url.Action("LogOut","Login")"><b>LogOut</b></a></p>

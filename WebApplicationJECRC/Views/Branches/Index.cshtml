@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebApplicationJECRC.Models.Branch>
+
+@{
+    ViewBag.Title = "Index";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+<h2 align="center">Branch list </h2>
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped">
+    <tr>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.Name)
+                </b></td>
+        <td style="vertical-align : middle" align="center">
+            <b>
+                @Html.DisplayNameFor(model => model.FIG_Coor.Name)
+                </b>
+            </td>
+<th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td  style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td  style="vertical-align : middle" align="center">
+                @Html.DisplayFor(modelItem => item.FIG_Coor.Name)
+            </td>
+            <td  style="vertical-align : middle" align="center">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

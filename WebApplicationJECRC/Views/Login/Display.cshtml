@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Display";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+
+
+<h2 align="center">Login details </h2>
+<br />
+<br />
+
+
+<table class=" table table-bordered table-striped">
+    <tr>
+        <td style="vertical-align : middle" align="center"><b>ID</b></td>
+        <td style="vertical-align : middle" align="center"><b>User Name</b></td>
+        <td style="vertical-align : middle" align="center"><b>Password</b></td>
+        <td>
+        </td>
+        <td></td>
+    </tr>
+    @foreach (var lg in ViewBag.loginList)
+    {
+    <tr>
+        <td style="vertical-align : middle" align="center">@lg.ID</td>
+        <td style="vertical-align : middle" align="center">@lg.Username</td>
+        <td style="vertical-align : middle" align="center">@lg.Password</td>
+        <td style="vertical-align : middle" align="center"><a href="">Edit</a></td>
+        <td style="vertical-align : middle" align="center"><a href="">Delete</a></td>
+    </tr>
+    }
+</table>
+
+<p><a href="@Url.Action("Index","Admin")"><b>Back to Admin Tool Bar</b></a></p>
+<p><a href="@Url.Action("LogOut","Login")"><b>LogOut</b></a></p>
+
+
+

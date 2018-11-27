@@ -1,0 +1,38 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+<h2 align="center">Organizations list</h2>
+<br />
+<br />
+
+<table class=" table table-bordered table-striped">
+    <tr>
+        <td style="vertical-align : middle" align="center"><b>Organization Name</b></td>
+        <td style="vertical-align : middle" align="center"><b>Organization Address</b></td>
+        <td style="vertical-align : middle" align="center"><b>Organization Location</b></td>
+        <td style="vertical-align : middle" align="center"><b>Organization Contact Number</b></td>
+
+    </tr>
+    @foreach (var org in ViewBag.organizationList)
+    {
+        <tr>
+            <td style="vertical-align : middle" align="center">@org.Name</td>
+            <td style="vertical-align : middle" align="center">@org.Adress</td>
+            <td style="vertical-align : middle" align="center">@org.Location</td>
+            <td style="vertical-align : middle" align="center">@org.ContactNumber</td>
+
+        </tr>
+
+    }
+
+</table>
+
+<p><a href="@Url.Action("LogOut","Login")"><b>LogOut</b></a></p>
+

@@ -1,0 +1,110 @@
+﻿@model WebApplicationJECRC.Models.FIG
+
+@{
+    ViewBag.Title = "Details";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FIG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.internsNbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.internsNbr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LetterAlloted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LetterAlloted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Applied)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Applied)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stipened)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stipened)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoFeesNoStippend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoFeesNoStippend)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Confirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Confirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Branch.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Branch.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login.Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

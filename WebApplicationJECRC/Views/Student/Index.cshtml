@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+<div>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            Sorted by Branch
+
+        </button>
+
+        <a href="@Url.Action("DisplayStudentsByBranch","Student", new { id = 5 })">CSE</a>
+        <a href="@Url.Action("DisplayStudentsByBranch","Student", new { id = 6 })">CivilE</a>
+
+
+    </div>
+
+    <h2 align="center">Students List</h2>
+
+    <table class=" table table-bordered table-striped">
+        <tr>
+            <td colspan="5" style="vertical-align : middle" align="center"><a><b>Student details</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b>Parents Mobile Number</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b>Internship Letter Alloted</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b>Applied</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b>Company Paid/UnPaid</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b>Amount</b></a></td>
+            <td colspan="4" style="vertical-align : middle" align="center"><a><b>Organization Details</b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b></b></a></td>
+            <td rowspan="2" style="vertical-align : middle" align="center"><a><b></b></a></td>
+        </tr>
+        <tr>
+            <td style="vertical-align : middle" align="center"><b>ID</b></td>
+            <td style="vertical-align : middle" align="center"><b>Name</b></td>
+            <td style="vertical-align : middle" align="center"><b>Email ID</b></td>
+            <td style="vertical-align : middle" align="center"><b>Registration Number</b></td>
+            <td style="vertical-align : middle" align="center"><b>Branch</b></td>
+            <td style="vertical-align : middle" align="center"><b>Name</b></td>
+            <td style="vertical-align : middle" align="center"><b>Address</b></td>
+            <td style="vertical-align : middle" align="center"><b>Location</b></td>
+            <td style="vertical-align : middle" align="center"><b>Contact Number</b></td>
+
+        </tr>
+        <tbody>
+            @foreach (var student in ViewBag.students)
+            {
+                <tr>
+                    <td style="vertical-align : middle" align="center">@student.LoginID</td>
+                    <td style="vertical-align : middle" align="center">@student.Name</td>
+                    <td style="vertical-align : middle" align="center">@student.EmailID</td>
+                    <td style="vertical-align : middle" align="center">@student.RegNumber</td>
+                    <td style="vertical-align : middle" align="center">@student.Branch.Name</td>
+                    <td style="vertical-align : middle" align="center">@student.ParentMobilenNumber</td>
+                    <td style="vertical-align : middle" align="center">@student.LetterAlloted</td>
+                    <td style="vertical-align : middle" align="center">@student.HasApplied</td>
+                    <td style="vertical-align : middle" align="center">@student.IsPaid</td>
+                    <td style="vertical-align : middle" align="center">@student.Amount</td>
+                    <td style="vertical-align : middle" align="center">@student.Organization.Name</td>
+                    <td style="vertical-align : middle" align="center">@student.Organization.Location </td>
+                    <td style="vertical-align : middle" align="center">@student.Organization.Adress</td>
+                    <td style="vertical-align : middle" align="center">@student.Organization.ContactNumber</td>
+                    <td style="vertical-align : middle" align="center"><a href="">Edit</a></td>
+                    <td style="vertical-align : middle" align="center"><a href="">Delete</a></td>
+                </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
+<a href="@Url.Action("Create","Student")">Add Student</a>
+<p><a href="@Url.Action("Index","Admin")"><b>Back to Admin Tool Bar</b></a></p>
+ <p><a href="@Url.Action("LogOut","Login")"><b>LogOut</b></a></p>

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "DisplayFIGByBranch";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+<h2 align="center">List of FIGs of @ViewData["branchName"] Branch</h2>
+<br />
+<br />
+<table class=" table table-bordered table-striped">
+    <tr>
+        <td style="vertical-align : middle" align="center"><b>FIG Name</b></td>
+        <td style="vertical-align : middle" align="center"><b>FIG Email ID</b></td>
+
+        <td style="vertical-align : middle" align="center"><b>Number of inters</b></td>
+        <td style="vertical-align : middle" align="center"><b>Internship Letter Alloted</b></td>
+        <td style="vertical-align : middle" align="center"><b>Applied</b></td>
+        <td style="vertical-align : middle" align="center"><b>Stipend</b></td>
+        <td style="vertical-align : middle" align="center"><b>No fees and No Stipend</b></td>
+        <td></td>
+    </tr>
+    
+        @foreach (var fig in ViewBag.FIGs)
+        { <tr>
+            <td style="vertical-align : middle" align="center">@fig.Name</td>
+            <td style="vertical-align : middle" align="center">@fig.EmailID</td>
+
+            <td style="vertical-align : middle" align="center">@fig.internsNbr</td>
+            <td style="vertical-align : middle" align="center">@fig.LetterAlloted</td>
+            <td style="vertical-align : middle" align="center">@fig.Applied </td>
+
+            <td style="vertical-align : middle" align="center">@fig.Stipened</td>
+            <td style="vertical-align : middle" align="center">@fig.NoFeesNoStippend</td>
+
+            <td><a href="@Url.Action("DisplayStudentsByFIG", "Student", new { id = fig.ID })">Show details</a></td>
+            </tr>
+        }
+    
+</table>
+<p><a href="@Url.Action("LogOut","Login")"><b>LogOut</b></a></p>

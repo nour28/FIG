@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b490fda4a1644c128e23af525bc7c2f5" Name="Diagram1">
+        <EntityTypeShape EntityType="JECRCModel.Branch" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JECRCModel.FIG" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JECRCModel.FIG_Coor" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JECRCModel.Login" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JECRCModel.Organization" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="JECRCModel.Student" Width="1.5" PointX="9.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JECRCModel.University_FIG_Coor" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="JECRCModel.FK_Branch_FIG_Coor" ManuallyRouted="false" />
+        <AssociationConnector Association="JECRCModel.FK_FIG_Branch" ManuallyRouted="false" />
+        <AssociationConnector Association="JECRCModel.FK_Student_Branch" ManuallyRouted="false" />
+        <AssociationConnector Association="JECRCModel.FK_FIG_Login" ManuallyRouted="false" />
+        <AssociationConnector Association="JECRCModel.FK_Student_FIG" ManuallyRouted="false" />
+        <AssociationConnector Association="JECRCModel.FK_FIG_Coor_Login" ManuallyRouted="false" />
+        <AssociationConnector Association="JECRCModel.FK_Student_Login" ManuallyRouted="false" />
+        <AssociationConnector Association="JECRCModel.FK_University_FIG_Coor_Login" ManuallyRouted="false" />
+        <AssociationConnector Association="JECRCModel.FK_Student_Organization" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

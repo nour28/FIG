@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<html>
+
+<body>
+    <div class="jumbotron">
+        <h1>FIG Web Application</h1>
+        <p class="lead">FIG Web Application is a web application for Students and FIG in JECRC university </p>
+        <p><a href="https://jecrcuniversity.edu.in/" class="btn btn-primary btn-lg">Learn more about JECRC &raquo;</a></p>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Register</h2>
+            <p>
+                Get an account on FIG Web Application
+            </p>
+            <p><a class="btn btn-default" href="@Url.Action("Add","Login")">Register &raquo;</a></p>
+        </div>
+
+        <div class="col-md-6">
+            <h2>Log in</h2>
+            <p>Access to your existing account</p>
+            <p><a href="@Url.Action("LoginForm","Login")">Log in</a></p>
+        </div>
+
+    </div>
+</body>
+</html> 

@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "DisplayFIGDetails";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+    <h2>FIG Details</h2>
+
+
+    <table class=" table table-bordered table-striped">
+        <tr>
+            <td style="vertical-align : middle" align="center">ID</td>
+            <td style="vertical-align : middle" align="center">FIG Name</td>
+            <td style="vertical-align : middle" align="center">FIG Email ID</td>
+            <td style="vertical-align : middle" align="center">Branch</td>
+            <td style="vertical-align : middle" align="center">Number of inters</td>
+            <td style="vertical-align : middle" align="center">Internship Letter Alloted</td>
+            <td style="vertical-align : middle" align="center">Applied</td>
+            <td style="vertical-align : middle" align="center">Stipend</td>
+            <td style="vertical-align : middle" align="center">No fees and No Stipend</td>
+        </tr>
+        <tr>
+            @foreach (var fig in ViewBag.FIGs)
+            {
+                <td style="vertical-align : middle" align="center">@fig.LoginID</td>
+                <td style="vertical-align : middle" align="center">@fig.Name</td>
+                <td style="vertical-align : middle" align="center">@fig.EmailID</td>
+                <td style="vertical-align : middle" align="center">@ViewData["BranchName"]</td>
+            }
+            <td style="vertical-align : middle" align="center">@ViewData["internsNbr"]</td>
+            <td style="vertical-align : middle" align="center">@ViewData["internshipAllotedNbr"]</td>
+            <td style="vertical-align : middle" align="center">@ViewData["applied"] </td>
+            <td style="vertical-align : middle" align="center">@ViewData["stipened"]</td>
+            <td style="vertical-align : middle" align="center">@ViewData["NonStipened"]</td>
+        </tr>
+    </table>
+    <a href="@Url.Action("DisplayStudentsByFIG","Student",new {id=ViewData["FIGID"]})">Students List</a>
+    <p><a href="@Url.Action("LogOut","Login")">LogOut</a></p>
+
+
+

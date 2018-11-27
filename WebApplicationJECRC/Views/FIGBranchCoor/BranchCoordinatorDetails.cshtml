@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "BranchCoordinatorDetails";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+<h2 align="center">Branchs Coordinator Details</h2>
+<br />
+<br />
+
+<div>
+    <p><a href="@Url.Action("Create","FIG_Coor")"><b>Create new FIG Branch Coordinator</b></a></p>
+    <table class=" table table-bordered table-striped">
+        <tr>
+            <td style="vertical-align : middle" align="center"><b>Branch Name</b></td>
+            <td style="vertical-align : middle" align="center"><b>Login ID</b></td>
+            <td style="vertical-align : middle" align="center"><b>Name</b></td>
+            <td style="vertical-align : middle" align="center"><b>Email ID</b></td>
+            <td style="vertical-align : middle" align="center"><b>Phone Number</b></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            @foreach (var f in ViewBag.FIGCoordDEtails)
+            {
+            <tr>
+                <td style="vertical-align : middle" align="center">@f.Name</td>
+                <td style="vertical-align : middle" align="center">@f.FIG_Coor.LoginID</td>
+                <td style="vertical-align : middle" align="center">@f.FIG_Coor.Name</td>
+                <td style="vertical-align : middle" align="center">@f.FIG_Coor.EmailID</td>
+                <td style="vertical-align : middle" align="center">@f.FIG_Coor.PhoneNumber</td>
+                <td style="vertical-align : middle" align="center"><a href="@Url.Action("Edit","FIG_Coor",new {id=f.ID })">Edit</a></td>
+                <td style="vertical-align : middle" align="center"><a href="@Url.Action("Delete","FIG_Coor",new {id=f.ID })">Delete</a></td>
+            </tr>
+        }
+            </tr>
+        </table>
+    </div>
+    <p><a href="@Url.Action("Index","FIG_University_Coor")"><b>Back to Tool Bar</b></a></p>
+    <p><a href="@Url.Action("LogOut","Login")"><b>LogOut</b></a></p>
+

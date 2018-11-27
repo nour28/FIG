@@ -1,0 +1,13 @@
+﻿<option value="">--Select FIG--</option>
+@if (ViewBag.FIGList != null)
+{
+
+    foreach (var item in ViewBag.FIGList)
+    {
+
+        <option value="@item.Value">@item.Text </option>
+
+    }
+
+}
+

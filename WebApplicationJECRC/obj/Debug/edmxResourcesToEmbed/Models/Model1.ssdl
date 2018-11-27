@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JECRCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FigCorrID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FIG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BranchID" Type="int" Nullable="false" />
+    <Property Name="internsNbr" Type="int" Nullable="false" />
+    <Property Name="LetterAlloted" Type="int" />
+    <Property Name="Applied" Type="int" />
+    <Property Name="Stipened" Type="int" />
+    <Property Name="NoFeesNoStippend" Type="int" />
+    <Property Name="StudentPaid" Type="int" />
+    <Property Name="Confirmed" Type="int" />
+    <Property Name="LoginID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FIG_Coor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoginID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="EmailID" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Location" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Adress" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ContactNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RegNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BranchID" Type="int" Nullable="false" />
+    <Property Name="ParentMobilenNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LetterAlloted" Type="bit" />
+    <Property Name="HasApplied" Type="bit" />
+    <Property Name="IsPaid" Type="bit" />
+    <Property Name="Amount" Type="varchar" MaxLength="50" />
+    <Property Name="OrganiID" Type="int" Nullable="false" />
+    <Property Name="FigID" Type="int" Nullable="false" />
+    <Property Name="LoginID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="University_FIG_Coor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoginID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="EmailID" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Branch_FIG Coor">
+    <End Role="FIG_Coor" Type="Self.FIG_Coor" Multiplicity="1" />
+    <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FIG_Coor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Branch">
+        <PropertyRef Name="FigCorrID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FIG Coor_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="FIG_Coor" Type="Self.FIG_Coor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FIG_Coor">
+        <PropertyRef Name="LoginID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FIG_Branch">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+    <End Role="FIG" Type="Self.FIG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FIG">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FIG_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="FIG" Type="Self.FIG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FIG">
+        <PropertyRef Name="LoginID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Branch">
+    <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="BranchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_FIG">
+    <End Role="FIG" Type="Self.FIG" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FIG">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="FigID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="LoginID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="OrganiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_University FIG Coor_Login">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="University_FIG_Coor" Type="Self.University_FIG_Coor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="University_FIG_Coor">
+        <PropertyRef Name="LoginID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JECRCModelStoreContainer">
+    <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FIG" EntityType="Self.FIG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FIG_Coor" EntityType="Self.FIG_Coor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="University_FIG_Coor" EntityType="Self.University_FIG_Coor" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Branch_FIG Coor" Association="Self.FK_Branch_FIG Coor">
+      <End Role="FIG_Coor" EntitySet="FIG_Coor" />
+      <End Role="Branch" EntitySet="Branch" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FIG Coor_Login" Association="Self.FK_FIG Coor_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="FIG_Coor" EntitySet="FIG_Coor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FIG_Branch" Association="Self.FK_FIG_Branch">
+      <End Role="Branch" EntitySet="Branch" />
+      <End Role="FIG" EntitySet="FIG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FIG_Login" Association="Self.FK_FIG_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="FIG" EntitySet="FIG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Branch" Association="Self.FK_Student_Branch">
+      <End Role="Branch" EntitySet="Branch" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_FIG" Association="Self.FK_Student_FIG">
+      <End Role="FIG" EntitySet="FIG" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Login" Association="Self.FK_Student_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Organization" Association="Self.FK_Student_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK_University FIG Coor_Login" Association="Self.FK_University FIG Coor_Login">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="University_FIG_Coor" EntitySet="University_FIG_Coor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

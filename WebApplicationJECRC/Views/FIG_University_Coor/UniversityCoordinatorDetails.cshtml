@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "UniversityCoordinatorDetails";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/LoginForm");
+    }
+}
+
+<h2 align="center">University Coordinator Details</h2>
+<br />
+<br />
+
+
+<div>
+
+    <table class=" table table-bordered table-striped">
+        <tr>
+            <td style="vertical-align : middle" align="center"><b>Login ID</b></td>
+            <td style="vertical-align : middle" align="center"><b>Name</b></td>
+            <td style="vertical-align : middle" align="center"><b>Email ID</b></td>
+            <td style="vertical-align : middle" align="center"><b>Phone Number</b></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            @foreach (var f in ViewBag.FIGCoordDEtails)
+            {
+                <td style="vertical-align : middle" align="center">@f.LoginID</td>
+                <td style="vertical-align : middle" align="center">@f.Name</td>
+                <td style="vertical-align : middle" align="center">@f.EmailID</td>
+                <td style="vertical-align : middle" align="center">@f.PhoneNumber</td>
+                <td style="vertical-align : middle" align="center"><a href="">Edit</a></td>
+                <td style="vertical-align : middle" align="center"><a href="">Delete</a></td>
+
+            }
+        </tr>
+    </table>
+</div>
+<p><a href="@Url.Action("Index","Admin")"><b>Back to Admin Tool Bar</b></a></p>
+<p><a href="@Url.Action("LogOut","Login")"><b>LogOut</b></a></p>

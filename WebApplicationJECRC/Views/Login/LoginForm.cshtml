@@ -1,0 +1,116 @@
+﻿
+@model WebApplicationJECRC.Models.LoginModel
+@{
+    ViewBag.Title = "LoginForm";
+}
+
+    <style>
+        body {
+           
+            background-color: black;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+            background-color: white;
+        }
+
+       
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit button */
+        .registerbtn {
+            
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+            .registerbtn:hover {
+                opacity: 1;
+            }
+
+       
+
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+    </style>
+
+<div style="
+    width:50%;
+    margin :auto;    
+
+        border: 1px solid #000;
+        padding: 10px 10px;"
+      
+
+
+ >
+    @using (Html.BeginForm("Authorize","Login",FormMethod.Post))
+    {<h2 style="position:center;text-align:center">Login</h2>
+     <table style="margin:auto">
+         <tr>
+             <td></td>
+             <td style="text-decoration:underline"></td>
+         </tr>
+         <tr>
+             <td>
+                 @Html.LabelFor(model => model.Username)
+             </td>
+             <td>
+                 @Html.EditorFor(model => model.Username)
+             </td>
+         </tr>
+         <tr>
+             <td></td>
+             <td>@Html.ValidationMessageFor(model => model.Username)</td>
+         </tr>
+         <tr>
+             <td>
+                 @Html.LabelFor(model => model.Password)
+             </td>
+             <td>
+                 @Html.EditorFor(model => model.Password)
+             </td>
+         </tr>
+         <tr>
+             <td></td>
+             <td>@Html.ValidationMessageFor(model => model.Password)</td>
+         </tr>
+         <tr>
+             <td colspan="2">
+                 <label class="field-validation-error">@Html.DisplayFor(model =>model.LoadingErrorMessage)</label>
+             </td>
+         </tr>
+         <tr>
+             <td></td>
+             <td>
+                 <input class=" btn-success" type="submit" name="name" value="Login" />
+        
+             </td>
+         </tr>
+     </table>
+
+    }
+
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
